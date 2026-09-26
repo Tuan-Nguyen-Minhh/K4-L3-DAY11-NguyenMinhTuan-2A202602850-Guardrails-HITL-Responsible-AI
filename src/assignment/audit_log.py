@@ -27,7 +27,15 @@ class AuditLogPlugin:
 
     def record_input(self, *, user_id: str, text: str, request_id: str | None = None):
         """TODO: store input + start timestamp keyed by request_id/user_id."""
-        raise NotImplementedError("Implement AuditLogPlugin.record_input")
+        key = request_id or user_id
+        import time
+        self._open[key] = {
+            "user_id": user_id,
+            "input_text": text,
+            "start_time": time.time(),
+            "start_iso": utc_now_iso(),
+            "request_id": request_id
+        }
 
     def record_output(
         self,
@@ -39,14 +47,30 @@ class AuditLogPlugin:
         request_id: str | None = None,
     ):
         """TODO: store output, layer decision, latency; append to self.logs."""
-        raise NotImplementedError("Implement AuditLogPlugin.record_output")
+        key = request_id or user_id
+        import time
+        now = time.time()
+        start_data = self._open.pop(key, {})
+        start_time = start_data.get("start_time", now)
+        
+        log_entry = {
+            "timestamp": utc_now_iso(),
+            "user_id": user_id,
+            "request_id": request_id,
+            "input_text": start_data.get("input_text", ""),
+            "output_text": text,
+            "blocked": blocked,
+            "layer": layer,
+            "latency_ms": round((now - start_time) * 1000)
+        }
+        self.logs.append(log_entry)
 
     def export_json(self, filepath: str | None = None):
         """Write logs to disk (JSON array) under repo-root ``outputs/`` by default."""
-        # TODO: path = filepath or default_audit_log_path()
-        #       ensure parent dirs exist, dump self.logs with indent=2
-        _ = filepath or default_audit_log_path()
-        raise NotImplementedError("Implement AuditLogPlugin.export_json")
+        path = filepath or default_audit_log_path()
+        out_path = Path(path)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(self.logs, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def utc_now_iso() -> str:
