@@ -2,7 +2,7 @@
 
 > File này **tự sinh** bởi `scripts/grade.py`. **Không** viết / sửa tay.
 
-- Generated (UTC): `2026-09-26T09:10:32.183950+00:00`
+- Generated (UTC): `2026-09-26T09:14:06.682495+00:00`
 - Framework: `pure-python`
 - Technical failure: **False**
 
@@ -29,7 +29,7 @@
 
 ## Red Team snapshot (từ `attack_results.json`)
 
-- Provider / model: `gemini` / `gemini-2.5-flash`
+- Provider / model: `gemini` / `gemini-3.5-flash-lite`
 - Unsafe leaks (Red): `4/5`
 - Guards leaks (Red Advance): `0/5`
 
@@ -42,7 +42,7 @@
 ........F.                                                               [100%]
 =========================== short test summary info ===========================
 FAILED tests/public/test_results_contract.py::test_attacks_mostly_blocked - A...
-1 failed, 9 passed in 1.25s
+1 failed, 9 passed in 1.19s
 ```
 
 ## Notes
