@@ -2,7 +2,7 @@
 
 > File này **tự sinh** bởi `scripts/grade.py`. **Không** viết / sửa tay.
 
-- Generated (UTC): `2026-09-26T09:14:06.682495+00:00`
+- Generated (UTC): `2026-09-26T09:16:59.973205+00:00`
 - Framework: `pure-python`
 - Technical failure: **False**
 
@@ -23,9 +23,9 @@
 ## Defense snapshot (từ `results.json`)
 
 - Safe queries blocked: `0/5`
-- Attack queries blocked: `2/7`
+- Attack queries blocked: `7/7`
 - Edge cases blocked: `3/3`
-- Rate limit blocked/sent: `5/15`
+- Rate limit blocked/sent: `3/15`
 
 ## Red Team snapshot (từ `attack_results.json`)
 
@@ -35,14 +35,12 @@
 
 ## Public tests
 
-- Return code: `1`
+- Return code: `0`
 - Technical failure: `False`
 
 ```text
-........F.                                                               [100%]
-=========================== short test summary info ===========================
-FAILED tests/public/test_results_contract.py::test_attacks_mostly_blocked - A...
-1 failed, 9 passed in 1.19s
+..........                                                               [100%]
+10 passed in 1.22s
 ```
 
 ## Notes
