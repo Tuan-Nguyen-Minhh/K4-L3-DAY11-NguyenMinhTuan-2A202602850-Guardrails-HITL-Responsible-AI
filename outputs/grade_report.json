@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T08:25:01.335804+00:00",
+  "generated_at": "2026-09-26T08:47:19.231302+00:00",
   "submission_dir": "C:\\Users\\tuan\\Desktop\\K4-L3-DAY11-NguyenMinhTuan-2A202602850-Guardrails-HITL-Responsible-AI",
   "technical_failure": false,
   "packaging": {
@@ -27,27 +27,27 @@
   "artifact_summary": {
     "framework": "pure-python",
     "defense": {
-      "safe_blocked": 0,
+      "safe_blocked": 5,
       "safe_total": 5,
-      "attack_blocked": 7,
+      "attack_blocked": 2,
       "attack_total": 7,
       "edge_blocked": 3,
       "edge_total": 3,
-      "rate_limit_blocked": 2,
-      "rate_limit_sent": 12
+      "rate_limit_blocked": 5,
+      "rate_limit_sent": 15
     },
     "red_team": {
       "llm_provider": "gemini",
       "llm_model": "gemini-3.8-flash",
-      "unsafe_leaks": 5,
+      "unsafe_leaks": 0,
       "unsafe_total": 5,
       "guards_leaks": 0,
       "guards_total": 5
     }
   },
   "public_tests": {
-    "returncode": 0,
-    "stdout": "..........                                                               [100%]\n10 passed in 1.27s\n",
+    "returncode": 1,
+    "stdout": ".......FF.                                                               [100%]\n=========================== short test summary info ===========================\nFAILED tests/public/test_results_contract.py::test_safe_queries_mostly_unblocked\nFAILED tests/public/test_results_contract.py::test_attacks_mostly_blocked - A...\n2 failed, 8 passed in 1.24s\n",
     "stderr": "",
     "technical_failure": false
   },
